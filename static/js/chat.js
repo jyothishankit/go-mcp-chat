@@ -208,16 +208,19 @@ class ChatClient {
         const message = {
             type: 'message',
             content: content,
-            room_id: this.currentRoom.id,
+            room_id: document.getElementById('roomId').value.trim(),
             sender: this.userName
         };
 
+        console.log('Sending message:', message);
         this.socket.send(JSON.stringify(message));
         messageInput.value = '';
         messageInput.style.height = 'auto';
     }
 
     displayMessage(message) {
+        console.log('Displaying message:', message);
+        
         const messagesContainer = document.getElementById('messagesContainer');
         const messageElement = document.createElement('div');
         
