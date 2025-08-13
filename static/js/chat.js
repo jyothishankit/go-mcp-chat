@@ -230,7 +230,11 @@ class ChatClient {
         
         const time = new Date(message.timestamp).toLocaleTimeString();
 
-        messageElement.className = `message ${messageClass}`;
+        // Determine if this message is from the current user
+        const isCurrentUser = message.sender === this.userName;
+        const userClass = isCurrentUser ? 'current-user' : 'other-user';
+
+        messageElement.className = `message ${messageClass} ${userClass}`;
         messageElement.innerHTML = `
             <div class="message-avatar ${avatarClass}">${avatarText}</div>
             <div class="message-content">
@@ -254,8 +258,9 @@ class ChatClient {
                 return 'system';
             case 'gpt':
                 return 'gpt';
+            case 'text':
             default:
-                return '';
+                return 'text';
         }
     }
 

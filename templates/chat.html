@@ -197,6 +197,18 @@
             max-width: 70%;
         }
 
+        /* Current user's messages - light green */
+        .message.current-user .message-content {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+
+        /* Other users' messages - light blue */
+        .message.other-user .message-content {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+        }
+
         .message-header {
             display: flex;
             justify-content: space-between;
@@ -227,6 +239,15 @@
         .message.gpt .message-content {
             background: #d4edda;
             border-left: 4px solid #28a745;
+        }
+
+        /* Override user highlighting for system and GPT messages */
+        .message.system.current-user .message-content,
+        .message.system.other-user .message-content,
+        .message.gpt.current-user .message-content,
+        .message.gpt.other-user .message-content {
+            background: inherit;
+            border-left: inherit;
         }
 
         .chat-input {
